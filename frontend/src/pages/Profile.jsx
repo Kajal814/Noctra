@@ -61,16 +61,18 @@ const Profile = () => {
         <div className="profile-cover"></div>
 
         <div className="profile-information">
-          <div className="profile-avatar-large">
-            {user?.name?.charAt(0)?.toUpperCase() || "U"}
-          </div>
+         <div className="profile-avatar-large">
+  {(user?.username || user?.name || "U")
+    .charAt(0)
+    .toUpperCase()}
+</div>
 
-          <div className="profile-details">
-            <span className="eyebrow">YOUR NOCTRA SPACE</span>
-            <h1>{user?.name || "Member"}</h1>
-            <p>{user?.email}</p>
-            <span className="member-label">Community member</span>
-          </div>
+<div className="profile-details">
+  <span className="eyebrow">YOUR NOCTRA SPACE</span>
+  <h1>{user?.username || user?.name || "Member"}</h1>
+  <p>{user?.email}</p>
+  <span className="member-label">Community member</span>
+</div>
         </div>
 
         <div className="profile-stats">

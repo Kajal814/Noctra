@@ -6,6 +6,9 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
+  const username = user?.username || user?.name || "User";
+  const initial = username.charAt(0).toUpperCase();
+
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -30,11 +33,11 @@ const Navbar = () => {
 
       <div className="navbar-user">
         <div className="navbar-avatar">
-          {user?.name?.charAt(0)?.toUpperCase() || "U"}
+          {initial}
         </div>
 
         <span className="navbar-user-name">
-          {user?.name || "User"}
+          {username}
         </span>
 
         <button

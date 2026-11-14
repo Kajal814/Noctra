@@ -27,7 +27,11 @@ const PostCard = ({ post, onUpdate, onDelete }) => {
   );
 
   const authorName =
-    post.user?.name || post.author?.name || "Noctra member";
+  post.user?.username ||
+  post.user?.name ||
+  post.author?.username ||
+  post.author?.name ||
+  "Noctra member";
 
   useEffect(() => {
     loadComments();
@@ -228,11 +232,15 @@ const PostCard = ({ post, onUpdate, onDelete }) => {
           return (
             <div className="comment-item" key={comment._id}>
               <div className="comment-avatar">
-                {(comment.user?.name || "U").charAt(0).toUpperCase()}
+               {(comment.user?.username || comment.user?.name || "U")
+  .charAt(0)
+  .toUpperCase()}
               </div>
 
               <div className="comment-body">
-                <strong>{comment.user?.name || "Member"}</strong>
+                <strong>
+  {comment.user?.username || comment.user?.name || "Member"}
+</strong>
                 <p>{comment.content}</p>
               </div>
 
