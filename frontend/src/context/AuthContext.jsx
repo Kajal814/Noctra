@@ -45,21 +45,21 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const response = await API.post("/auth/register", {
-      name,
-      email,
-      password,
-    });
+  const response = await API.post("/auth/register", {
+    username: name,
+    email,
+    password,
+  });
 
-    const token = response.data.token;
+  const token = response.data.token;
 
-    if (token) {
-      localStorage.setItem("token", token);
-      setUser(response.data.user);
-    }
+  if (token) {
+    localStorage.setItem("token", token);
+    setUser(response.data.user);
+  }
 
-    return response.data;
-  };
+  return response.data;
+};
 
   const logout = () => {
     localStorage.removeItem("token");
